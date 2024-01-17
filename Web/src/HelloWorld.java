@@ -7,12 +7,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/HelloWord")
+@WebServlet("/HelloWorld")
 public class HelloWorld extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        PrintWriter pr = resp.getWriter();
-        pr.write("Hello World");
+        PrintWriter printWriter = resp.getWriter();
+        printWriter.write("<h2>Xin chào, tôi là Thắng. Thật là đẹp trai</2>");
     }
+    
 }
