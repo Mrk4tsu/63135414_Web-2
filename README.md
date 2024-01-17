@@ -1,5 +1,5 @@
-# 63CNTT-Mobile-Dev: LẬP TRÌNH ỨNG DỤNG MOBILE
-> Sinh viên: Nguyễn Đức Thắng 63 CNTT-CLC 2
+# 63CNTT: PHÁT TRIỂN ỨNG DỤNG WEB 2
+> Sinh viên: Nguyễn Đức Thắng 63 CNTT-CLC
  ## Install:
  - Intellij hoặc Eclipse
  - Tomcat Apace
