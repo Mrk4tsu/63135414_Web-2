@@ -7,6 +7,9 @@
 
 [Cách Setup để thực hiện Servlet trên Intellij](https://github.com/Mrk4tsu/63135414_Web-2/wiki/Servlet)
 
+#### About Me:
+<img src="https://github.com/Mrk4tsu/63135414_Web-2/assets/120944583/70d97706-867a-4262-9788-f4609aa8b331" width="800" />
+
 #### doPost:
 ![prv](https://github.com/Mrk4tsu/63135414_Web-2/assets/120944583/3e574576-fd9a-4441-aed4-d92099a887c1)
 
