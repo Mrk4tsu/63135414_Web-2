@@ -7,6 +7,9 @@
 
 [Cách Setup để thực hiện Servlet trên Intellij](https://github.com/Mrk4tsu/63135414_Web-2/wiki/Servlet)
 
+#### BMI:
+<img src="https://github.com/Mrk4tsu/63135414_Web-2/assets/120944583/f06886ac-0769-4b70-afdc-d0aa6000d6b9" width="800" />
+
 #### About Me:
 <img src="https://github.com/Mrk4tsu/63135414_Web-2/assets/120944583/70d97706-867a-4262-9788-f4609aa8b331" width="800" />
 
