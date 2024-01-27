@@ -13,6 +13,9 @@
     <div>
         <a th:href="@{users/new}" class="text-uppercase btn btn-primary my-2">Create New</a>
     </div>
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
             <thead class="table-dark">
