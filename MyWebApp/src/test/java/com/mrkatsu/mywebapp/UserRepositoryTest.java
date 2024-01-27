@@ -31,4 +31,13 @@ public class UserRepositoryTest {
         assertThat(save).isNotNull();
         assertThat(save.getId()).isGreaterThan(0);
     }
+    @Test
+    public void testListUser(){
+        Iterable<User> listUser = userRepository.findAll();
+        assertThat(listUser).hasSizeGreaterThan(0);
+
+        for (User user : listUser){
+            System.out.println(user.toString());
+        }
+    }
 }
