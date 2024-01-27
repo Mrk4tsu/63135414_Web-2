@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Manage User</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+
+<body>
+<div class="container-fluid text-center">
+    <h1>Welcome to my application!</h1>
+    <div>
+        <a th:href="@{users/new}" class="text-uppercase btn btn-primary my-2">Create New</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Avatar</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="user : ${listUsers}">
+                <tr>
+                    <td>[[${user.id}]]</td>
+                    <td>[[${user.username}]]</td>
+                    <td>[[${user.password}]]</td>
+                    <td>[[${user.firstname}]]</td>
+                    <td>[[${user.lastname}]]</td>
+                    <td>[[${user.avatar}]]</td>
+                    <td>
+                        <a class="text-decoration-none text-info" th:href="@{'/users/edit/' + ${user.id}}">
+                            Update
+                        </a>
+                        <a class="text-decoration-none text-info" th:href="@{'/users/delete/' + ${user.id}}">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+
+</html>
