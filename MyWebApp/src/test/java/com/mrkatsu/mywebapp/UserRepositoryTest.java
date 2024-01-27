@@ -23,11 +23,12 @@ public class UserRepositoryTest {
     @Test
     public void testAddNew(){
         User user = new User();
-        user.setUsername("test03");
+        user.setUsername("test04");
         user.setPassword("test");
         user.setAvatar("avatarUser.png");
-        user.setFirstname("Hoàng Văn");
-        user.setLastname("Cê");
+        user.setFirstname("Nguyễn Văn");
+        user.setLastname("Thành");
+        user.setActive(true);
 
         User save = userRepository.save(user);
 
