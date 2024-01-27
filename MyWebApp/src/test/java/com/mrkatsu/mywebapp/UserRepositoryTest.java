@@ -10,6 +10,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
 import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureTestEntityManager;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
+
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -39,5 +42,18 @@ public class UserRepositoryTest {
         for (User user : listUser){
             System.out.println(user.toString());
         }
+    }
+    @Test
+    public void testUpdate(){
+        Integer userId = 1;
+        Optional<User> optionalUser = userRepository.findById(userId);
+
+        User user = optionalUser.get();
+        user.setPassword("katsu123");
+
+        userRepository.save(user);
+
+        User updateUser = userRepository.findById(userId).get();
+        assertThat(updateUser.getPassword()).isEqualTo("katsu123");
     }
 }
