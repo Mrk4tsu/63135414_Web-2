@@ -19,6 +19,16 @@ public class User {
     private String lastname;
     @Column(nullable = false, length = 45)
     private String avatar;
+    @Column(nullable = false)
+    private boolean isActive;
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 
     public Integer getId() {
         return id;

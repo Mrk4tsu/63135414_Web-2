@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New User</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <h1>Create A New User!</h1>
+    <a class="h2 text-primary text-decoration-none" th:href="@{/users}">Back To List</a>
+    <div class="d-flex justify-content-center">
+        <div class="col-md-5">
+            <form th:action="@{/user/save}" method="post" th:object="${user}">
+                <div class="border border-secondary rounded p-3">
+                    <div class="form-group row">
+                        <div class="row form-group">
+                            <label class="col-sm-4 col-form-label">Username: </label>
+                            <div class="col-sm-7">
+                                <input type="text" th:field="*{username}" class="form-control my-2"/>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-sm-4 col-form-label">Password: </label>
+                            <div class="col-sm-7">
+                                <input type="password" th:field="*{password}" class="form-control my-2"/>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-sm-4 col-form-label">First Name: </label>
+                            <div class="col-sm-7">
+                                <input type="text" th:field="*{firstname}" class="form-control my-2"/>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <label class="col-sm-4 col-form-label">Last Name: </label>
+                            <div class="col-sm-7">
+                                <input type="text" th:field="*{lastname}" class="form-control my-2"/>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-sm-4 col-form-label">Avatar: </label>
+                            <div class="col-sm-7">
+                                <input type="text" th:field="*{avatar}" class="form-control my-2"/>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-sm-4 col-form-label">Active: </label>
+                            <div class="col-sm-7">
+                                <input type="checkbox" th:field="*{active}"/>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary" style="width: 40%" type="submit">Save</button>
+                            <button class="btn btn-secondary" style="width: 40%" type="submit">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
