@@ -12,38 +12,39 @@
     <a class="h2 text-primary text-decoration-none" th:href="@{/users}">Back To List</a>
     <div class="d-flex justify-content-center">
         <div class="col-md-5">
-            <form th:action="@{/user/save}" method="post" th:object="${user}">
+            <form th:action="@{/users/save}" method="post" th:object="${user}">
                 <div class="border border-secondary rounded p-3">
                     <div class="form-group row">
                         <div class="row form-group">
                             <label class="col-sm-4 col-form-label">Username: </label>
                             <div class="col-sm-7">
-                                <input type="text" th:field="*{username}" class="form-control my-2"/>
+                                <input type="text" th:field="*{username}" class="form-control my-2" required/>
                             </div>
                         </div>
                         <div class="row form-group">
                             <label class="col-sm-4 col-form-label">Password: </label>
                             <div class="col-sm-7">
-                                <input type="password" th:field="*{password}" class="form-control my-2"/>
+                                <input type="password" th:field="*{password}" class="form-control my-2" required
+                                       minlength="6"/>
                             </div>
                         </div>
                         <div class="row form-group">
                             <label class="col-sm-4 col-form-label">First Name: </label>
                             <div class="col-sm-7">
-                                <input type="text" th:field="*{firstname}" class="form-control my-2"/>
+                                <input type="text" th:field="*{firstname}" class="form-control my-2" required/>
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <label class="col-sm-4 col-form-label">Last Name: </label>
                             <div class="col-sm-7">
-                                <input type="text" th:field="*{lastname}" class="form-control my-2"/>
+                                <input type="text" th:field="*{lastname}" class="form-control my-2" required/>
                             </div>
                         </div>
                         <div class="row form-group">
                             <label class="col-sm-4 col-form-label">Avatar: </label>
                             <div class="col-sm-7">
-                                <input type="text" th:field="*{avatar}" class="form-control my-2"/>
+                                <input type="text" th:field="*{avatar}" class="form-control my-2" required/>
                             </div>
                         </div>
                         <div class="row form-group">
@@ -52,9 +53,12 @@
                                 <input type="checkbox" th:field="*{active}"/>
                             </div>
                         </div>
-                        <div class="text-center">
+                        <hr>
+                        <div class="text-center m-2">
                             <button class="btn btn-primary" style="width: 40%" type="submit">Save</button>
-                            <button class="btn btn-secondary" style="width: 40%" type="submit">Cancel</button>
+                            <button class="btn btn-secondary" style="width: 40%" type="button" onclick="cancelForm()">
+                                Cancel
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -62,5 +66,11 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function cancelForm() {
+        window.location = "[[@{/users}]]"
+    }
+</script>
 </body>
 </html>
