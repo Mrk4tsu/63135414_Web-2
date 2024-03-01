@@ -26,5 +26,11 @@ public class UserService {
         }
         throw new UserNotFoundException("Can not find User with ID: " + userId);
     }
-
+    public void delete(Integer userId) throws UserNotFoundException {
+        Long count = repository.countById(userId);
+        if (count == null || count == 0){
+            throw new UserNotFoundException("List empty");
+        }
+        repository.deleteById(userId);
+    }
 }
