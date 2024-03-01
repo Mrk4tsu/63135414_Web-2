@@ -6,7 +6,7 @@
  - MySQL
  - Java SE Development Kit (JDK)
 
-[Cách Setup để thực hiện Servlet trên Intellij](https://github.com/Mrk4tsu/63135414_Web-2/wiki/Servlet)
+[1 Vài thứ khi tạo dự án trên IntelliJ](https://github.com/Mrk4tsu/63135414_Web-2/wiki)
 
 #### BMI:
 <img src="https://github.com/Mrk4tsu/63135414_Web-2/assets/120944583/f06886ac-0769-4b70-afdc-d0aa6000d6b9" width="800" />
