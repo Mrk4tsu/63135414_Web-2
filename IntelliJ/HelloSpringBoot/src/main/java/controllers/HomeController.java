@@ -9,4 +9,8 @@ public class HomeController {
     public String goHome(){
         return "index";
     }
+    @GetMapping("/about")
+    public String goAbout(){
+        return "about";
+    }
 }
