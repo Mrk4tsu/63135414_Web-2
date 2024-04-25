@@ -47,7 +47,10 @@
                             <td>[[${user.password}]]</td>
                             <td>[[${user.name}]]</td>
                             <td>[[${user.email}]]</td>
-                            <td>[[${user.avatar}]]</td>
+                            <td class="text-center">
+                                <img class="rounded-circle" th:src="@{'/images/' + ${user.username} + '/' + ${user.avatar}}" alt="User Avatar" width="35" >
+<!--                                <img src="/wm.jpg" width="50" height="50">-->
+                            </td>
                             <td>[[${user.created_at}]]</td>
                             <td>[[${user.status}]]</td>
                             <td>
