@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -23,15 +24,19 @@ public class UserController {
         model.addAttribute("listUsers", listUsers);
         return "user";
     }
-    @GetMapping("/nguoi-dung/them-nguoi-dung")
+    @GetMapping("/nguoi-dung/them-moi")
     public String showAddUserPage(Model model){
-        model.addAttribute("user", new User());
-        model.addAttribute("pageTitle", "Create New User");
-        return "user-form";
+            model.addAttribute("user", new User());
+            model.addAttribute("pageTitle", "Tạo mới người dùng");
+            return "user-form";
     }
-    @PostMapping("/nguoi-dung/save{id}")
-    public String saveUser(User user){
+    @PostMapping("/nguoi-dung/save")
+    public String saveUser(User user, RedirectAttributes attributes){
         service.save(user);
+
+        System.out.println(user.toString());
+
+        attributes.addFlashAttribute("message", "Tạo mới người dùng thành công.");
         return "redirect:/nguoi-dung";
     }
 }

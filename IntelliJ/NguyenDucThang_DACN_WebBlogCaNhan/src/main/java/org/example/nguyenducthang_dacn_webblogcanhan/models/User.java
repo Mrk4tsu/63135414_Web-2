@@ -24,6 +24,8 @@ public class User {
     private Date created_at;
     @Column
     private Date modified_at;
+    @Column(nullable = true)
+    private int role_id;
     @Column
     private boolean status;
 
@@ -97,5 +99,29 @@ public class User {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public int getRole_id() {
+        return role_id;
+    }
+
+    public void setRole_id(int role_id) {
+        this.role_id = role_id;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", created_at=" + created_at +
+                ", modified_at=" + modified_at +
+                ", role_id=" + role_id +
+                ", status=" + status +
+                '}';
     }
 }
