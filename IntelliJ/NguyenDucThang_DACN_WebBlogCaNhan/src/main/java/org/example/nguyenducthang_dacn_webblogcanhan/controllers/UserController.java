@@ -12,11 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 
@@ -29,32 +24,21 @@ public class UserController {
     }
 
     @GetMapping("/nguoi-dung")
-    public String showUserPage(Model model){
+    public String showUserPage(Model model) {
         List<User> listUsers = service.listAll();
         model.addAttribute("listUsers", listUsers);
         return "user";
     }
+
     @GetMapping("/nguoi-dung/them-moi")
-    public String showAddUserPage(Model model){
-            model.addAttribute("user", new User());
-            model.addAttribute("pageTitle", "Tạo mới người dùng");
-            return "user-form";
+    public String showAddUserPage(Model model) {
+        model.addAttribute("user", new User());
+        model.addAttribute("pageTitle", "Tạo mới người dùng");
+        return "user-form";
     }
+
     @PostMapping("/nguoi-dung/save")
-    public String saveUser(@ModelAttribute User user, @RequestParam("avatar")MultipartFile avatarFile, RedirectAttributes attributes) throws IOException {
-        String uploadDir = "static/images/" + user.getUsername();
-        Path uploadPath = Paths.get(uploadDir);
-        if (!Files.exists(uploadPath)) {
-            Files.createDirectories(uploadPath);
-        }
-
-        // Save the file to the static directory
-        String fileName = StringUtils.cleanPath(avatarFile.getOriginalFilename());
-        Path filePath = uploadPath.resolve(fileName);
-        Files.copy(avatarFile.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-
-        user.setAvatar(fileName); // Set the filename to the user's avatar field
-
+    public String saveUser(@ModelAttribute User user, RedirectAttributes attributes){
         service.save(user);
 
         System.out.println(user.toString());

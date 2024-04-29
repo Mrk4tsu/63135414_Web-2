@@ -11,7 +11,7 @@
 <div class="d-flex justify-content-center">
 
     <div class="col-md-5">
-        <form th:action="@{/nguoi-dung/save}" method="post" th:object="${user}">
+        <form th:action="@{/nguoi-dung/save}" method="post" th:object="${user}" enctype="multipart/form-data">
             <input type="hidden" th:field="*{id}"/>
 
             <div class="border border-secondary rounded p-3">
@@ -47,7 +47,7 @@
                     <div class="row form-group">
                         <label class="col-sm-4 col-form-label">Ảnh đại diện: </label>
                         <div class="col-sm-7">
-                            <input type="file" th:field="*{avatar}" class="form-control my-2" required/>
+                            <input type="text" th:field="*{avatar}" class="form-control my-2" required/>
                         </div>
                     </div>
 
