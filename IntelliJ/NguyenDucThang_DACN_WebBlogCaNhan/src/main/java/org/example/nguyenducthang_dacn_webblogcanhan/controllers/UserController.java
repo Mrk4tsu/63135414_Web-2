@@ -2,14 +2,11 @@ package org.example.nguyenducthang_dacn_webblogcanhan.controllers;
 
 import org.example.nguyenducthang_dacn_webblogcanhan.models.User;
 import org.example.nguyenducthang_dacn_webblogcanhan.services.UserService;
+import org.example.nguyenducthang_dacn_webblogcanhan.utils.UserNotFoundException;
+import org.example.nguyenducthang_dacn_webblogcanhan.utils.Utilities;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -27,14 +24,14 @@ public class UserController {
     public String showUserPage(Model model) {
         List<User> listUsers = service.listAll();
         model.addAttribute("listUsers", listUsers);
-        return "user";
+        return "user/user";
     }
 
     @GetMapping("/nguoi-dung/them-moi")
     public String showAddUserPage(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("pageTitle", "Tạo mới người dùng");
-        return "user-form";
+        return "user/user-form";
     }
 
     @PostMapping("/nguoi-dung/save")
@@ -45,5 +42,18 @@ public class UserController {
 
         attributes.addFlashAttribute("message", "Tạo mới người dùng thành công.");
         return "redirect:/nguoi-dung";
+    }
+    @GetMapping("/chinh-sua/{id}")
+    public String showFormEdit(@PathVariable("id") Integer id, Model model, RedirectAttributes attributes){
+        try {
+            User user = service.get(id);
+            model.addAttribute("user", user);
+            model.addAttribute("pageTitle", "Edit User (" + id + ")");
+
+            return "user/user-form";
+        } catch (UserNotFoundException e) {
+            attributes.addFlashAttribute("message", "The user has been created successfully.");
+            return Utilities.Redirect("users");
+        }
     }
 }
