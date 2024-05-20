@@ -52,9 +52,9 @@
 <!--                                <img src="/wm.jpg" width="50" height="50">-->
                             </td>
                             <td>[[${user.created_at}]]</td>
-                            <td>[[${user.status}]]</td>
+                            <td th:text="${user.status ? 'Actived' : 'Deactived'}"></td>
                             <td>
-                                <a class="text-decoration-none text-info" th:href="@{'/users/edit/' + ${user.id}}">
+                                <a class="text-decoration-none text-info" th:href="@{'/chinh-sua/' + ${user.id}}">
                                     Update
                                 </a>
                                 <a class="text-decoration-none text-info" th:href="@{'/users/delete/' + ${user.id}}">
