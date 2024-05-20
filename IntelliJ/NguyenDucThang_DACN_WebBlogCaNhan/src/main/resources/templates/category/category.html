@@ -39,6 +39,7 @@
                         <thead class="table-dark">
                         <tr>
                             <th> Tên </th>
+                            <th> Meta Title </th>
                             <th> Ngày tạo </th>
                             <th> Trạng thái </th>
                             <th>#</th>
@@ -48,13 +49,15 @@
                         <th:block th:each="cate : ${listCategory}">
                             <tr>
                                 <td>[[${cate.name}]]</td>
+                                <td>[[${cate.meta_title}]]</td>
                                 <td>[[${cate.created_at}]]</td>
                                 <td th:text="${cate.status ? 'Actived' : 'Deactived'}"></td>
                                 <td>
-                                    <a class="text-decoration-none text-info" th:href="@{'/chinh-sua/' + ${cate.id}}">
+                                    <a class="text-decoration-none text-info" th:href="@{'/danh-muc/chinh-sua/' + ${cate.id}}">
                                         Update
                                     </a>
-                                    <a class="text-decoration-none text-info" th:href="@{'/users/delete/' + ${cate.id}}">
+                                    |
+                                    <a class="text-decoration-none text-info delete-btn" th:href="@{'/danh-muc/xoa/' + ${cate.id}}" data-toggle="modal" data-target="#confirmModal">
                                         Delete
                                     </a>
                                 </td>
@@ -69,5 +72,6 @@
 
     </div>
 </div>
+
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,35 +13,39 @@
 <div id="wrapper">
     <div th:replace="layout/_layout :: header"></div>
 
-    <div id="content-wrapper" class="d-flex flex-column card container-fluid">
+    <div id="content-wrapper" class="d-flex flex-column card container-fluid card">
+        <div class="card-header">
+            <h1>[[${pageTitle}]]</h1>
+            <a class="h4 text-primary text-decoration-none" th:href="@{/danh-muc}">Back To List</a>
+        </div>
         <div class="card-body">
             <div class="d-flex justify-content-center">
-                <form th:action="@{/nguoi-dung/save}" method="post" th:object="${user}" enctype="multipart/form-data">
+                <form th:action="@{/danh-muc/save}" method="post" th:object="${category}" enctype="multipart/form-data">
                     <input type="hidden" th:field="*{id}"/>
                     <div class="row d-flex justify-content-center">
                         <div class="mb-3 col-8">
-                            <label for="username" class="form-label"> Tài khoản </label>
-                            <input type="text" th:field="*{username}" class="form-control col-12" id="username" >
+                            <label for="name" class="form-label"> Tên </label>
+                            <input type="text" th:field="*{name}" class="form-control col-12" id="name" >
                         </div>
                         <div class="mb-3 col-8">
-                            <label for="pass" class="form-label"> Mật khẩu </label>
-                            <input type="password" th:field="*{password}" class="form-control col-12" id="pass">
+                            <label for="display" class="form-label"> Thứ tự ưu tiên </label>
+                            <input type="number" th:field="*{display_order}" class="form-control col-12" id="display" >
                         </div>
                         <div class="mb-3 col-8">
-                            <label for="name" class="form-label"> Tên người dùng </label>
-                            <input type="text" th:field="*{name}" class="form-control col-12" id="name">
+                            <label for="parent" class="form-label"> Danh mục cha </label>
+                            <input type="number" th:field="*{parent_id}" class="form-control col-12" id="parent" >
                         </div>
                         <div class="mb-3 col-8">
-                            <label for="email" class="form-label"> Email </label>
-                            <input type="email" th:field="*{email}" class="form-control col-12" id="email">
-                        </div>
-                        <div class="mb-3 col-8">
-                            <label for="avatar" class="form-label"> Ảnh đại diện </label>
-                            <input type="text" th:field="*{avatar}" class="form-control col-12" id="avatar">
+                            <label for="seo" class="form-label"> Keyword tìm kiếm </label>
+                            <input type="text" th:field="*{seo_keyword}" class="form-control col-12" id="seo" >
                         </div>
                         <div class="mb-3 col-8 form-check">
-                            <input type="checkbox" th:field="*{status}" class="form-check-input" id="status">
-                            <label class="form-check-label"  for="status"> Trạng thái tài khoản </label>
+                            <input type="checkbox" th:field="*{status}" class="form-check-input col-8" id="status">
+                            <label class="form-check-label"  for="status"> Trạng thái danh mục </label>
+                        </div>
+                        <div class="mb-3 col-8 form-check">
+                            <input type="checkbox" th:field="*{status}" class="form-check-input col-8" id="show">
+                            <label class="form-check-label"  for="show"> Hiển thị trang chủ </label>
                         </div>
                         <div class="text-center col-8 m-2">
                             <button class="btn btn-primary" style="width: 40%" type="submit">Save</button>
@@ -51,6 +55,7 @@
                         </div>
                     </div>
                 </form>
+
 
             </div>
         </div>
@@ -66,13 +71,5 @@
 <script th:href="@{/vendor/jquery/jquery.js}"></script>
 <script th:href="@{/vendor/bootstrap/js/bootstrap.bundle.js}"></script>
 <script th:href="@{/vendor/jquery-easing/jquery.easing.js}"></script>
-
-<!-- Custom scripts for all pages-->
-<script th:href="@{/js/sb-admin-2.js}"></script>
-<script type="text/javascript">
-    function cancelForm() {
-        window.location = "[[@{/nguoi-dung}]]"
-    }
-</script>
 </body>
 </html>
