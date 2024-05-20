@@ -41,7 +41,7 @@ public class UserController {
         System.out.println(user.toString());
 
         attributes.addFlashAttribute("message", "Tạo mới người dùng thành công.");
-        return "redirect:/nguoi-dung";
+        return Utilities.Redirect("nguoi-dung");
     }
     @GetMapping("/chinh-sua/{id}")
     public String showFormEdit(@PathVariable("id") Integer id, Model model, RedirectAttributes attributes){
