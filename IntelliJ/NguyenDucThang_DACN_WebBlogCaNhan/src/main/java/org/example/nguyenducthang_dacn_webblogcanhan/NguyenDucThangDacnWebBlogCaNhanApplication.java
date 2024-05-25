@@ -2,9 +2,16 @@ package org.example.nguyenducthang_dacn_webblogcanhan;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class NguyenDucThangDacnWebBlogCaNhanApplication {
+public class NguyenDucThangDacnWebBlogCaNhanApplication extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder applicationBuilder) {
+        return applicationBuilder.sources(NguyenDucThangDacnWebBlogCaNhanApplication.class);
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(NguyenDucThangDacnWebBlogCaNhanApplication.class, args);
