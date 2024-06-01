@@ -45,7 +45,9 @@
 
                             <div class="mb-3">
                                 <label for="detail" class="form-label">Detail:</label>
-                                <textarea th:field="*{detail}" class="form-control" id="detail" rows="3"></textarea>
+                                <textarea th:field="*{detail}" class="form-control" id="detail" rows="10" cols="80">
+                                    This is my textarea to be replaced with CKEditor 4.
+                                </textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="image" class="form-label">Image:</label>
@@ -104,7 +106,10 @@
 <div th:replace="admin/fragments/logout::logout"></div>
 <!-- Bootstrap core JavaScript-->
 <div th:replace="admin/fragments/script::script"></div>
-
+<script src="/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('detail');
+</script>
 </body>
 
 </html>

@@ -1,10 +1,7 @@
 package com.mrkatsu.quanlybaivietblog.admin.controllers;
 
-import com.mrkatsu.quanlybaivietblog.admin.models.Category;
-import com.mrkatsu.quanlybaivietblog.admin.models.Product;
-import com.mrkatsu.quanlybaivietblog.admin.services.CategoryService;
-import com.mrkatsu.quanlybaivietblog.admin.services.FilesStorageService;
-import com.mrkatsu.quanlybaivietblog.admin.services.ProductService;
+import com.mrkatsu.quanlybaivietblog.admin.models.*;
+import com.mrkatsu.quanlybaivietblog.admin.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,6 +40,7 @@ public class ProductController {
     }
     @PostMapping("/product/add")
     public String saveProduct(@ModelAttribute("product") Product product, @RequestParam("filename") MultipartFile file ) {
+        this.filesStorageService.init();
         this.filesStorageService.save(file);
         if (!file.isEmpty()) {
             String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -56,8 +54,6 @@ public class ProductController {
                 e.printStackTrace();
             }
         }
-//        String fileName = file.getOriginalFilename();
-//        product.setImage(fileName);
 
         if (productService.add(product)) {
             return "redirect:/admin/product";

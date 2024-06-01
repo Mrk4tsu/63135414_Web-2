@@ -16,16 +16,18 @@ import org.springframework.security.web.SecurityFilterChain;
 class SecurityConfig {
     @Autowired
     private CustomUserDetailService userDetailService;
+
     @Bean
     BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf(cfrs -> cfrs.disable()).authorizeHttpRequests((auth) -> auth.
                         requestMatchers("/*").permitAll().
                         requestMatchers("/admin/**").permitAll().
-//                        requestMatchers("/admin/**").hasAuthority("ADMIN").
+                        requestMatchers("/admin/**").hasAuthority("ADMIN").
                         anyRequest().authenticated()).
 
                 formLogin(login -> login.loginPage("/login").permitAll().loginProcessingUrl("/login")
@@ -37,11 +39,12 @@ class SecurityConfig {
                 );
         return httpSecurity.build();
     }
+
     @Bean
     WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web
                 .ignoring()
-                .requestMatchers("/static/**", "/customer/**","/server/**");
+                .requestMatchers("/static/**", "/customer/**", "/server/**", "/ckeditor/**", "/uploads/**");
     }
 
 }
