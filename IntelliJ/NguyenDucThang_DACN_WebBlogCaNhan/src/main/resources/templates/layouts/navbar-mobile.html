@@ -1,0 +1,23 @@
+<!--Phần navbar trên điện thoại-->
+<div class="humberger__menu__wrapper" th:fragment="navbar-mobile">
+    <div class="humberger__menu__logo">
+        <a href="#"><img src="img/logo.png" alt=""></a>
+    </div>
+    <div class="humberger__menu__cart">
+        <ul>
+            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+        </ul>
+        <div class="header__user"><span>Login</span></div>
+    </div>
+    <nav class="humberger__menu__nav mobile-menu">
+        <ul>
+            <li class="active"><a th:href="@{/}">Trang chủ</a></li>
+            <li><a href="/blogs.html">Blog</a></li>
+            <li><a href="./#">Liên hệ</a></li>
+            <li><a href="./#">Ứng dụng</a></li>
+        </ul>
+    </nav>
+    <div id="mobile-menu-wrap"></div>
+</div>
+<!--Kết thúc navbar trên điện thoại-->

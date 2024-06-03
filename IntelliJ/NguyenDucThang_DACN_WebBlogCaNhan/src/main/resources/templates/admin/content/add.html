@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="admin/fragments/head::head">
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul th:replace="admin/fragments/slidebar::slidebar"></ul>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav th:replace="admin/fragments/topbar::topbar"></nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold text-primary">Add A New Product</h6>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/admin/content/add}" th:object="${content}" method="post"
+                              enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name:</label>
+                                <input type="text" th:field="*{name}" class="form-control" id="name"
+                                       placeholder="Name Product">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="des" class="form-label">Description:</label>
+                                <input type="text" th:field="*{description}" class="form-control" id="des"
+                                       placeholder="Description Product">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="keyword" class="form-label">Keyword:</label>
+                                <input type="text" th:field="*{keyword}" class="form-control" id="keyword"
+                                       placeholder="Description Product">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="detail" class="form-label">Detail:</label>
+                                <textarea th:field="*{detail}" class="form-control" id="detail" rows="10" cols="80">
+                                    This is my textarea to be replaced with CKEditor 4.
+                                </textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Image:</label>
+                                <input type="file" class="form-control" id="image" name="filename"
+                                       placeholder="Choose Image Product">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Category:</label>
+                                <select class="form-control" th:field="*{category.id}">
+                                    <option th:each="cate : ${categories}" th:value="${cate.id}"
+                                            th:text="${cate.name}"></option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Status:</label>
+                                <div class="form-check">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" th:field="*{status}" value="false"
+                                               id="inlineRadio2">
+                                        <label class="form-check-label" for="inlineRadio2">Not Active</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" th:field="*{status}" value="true"
+                                               id="inlineRadio1">
+                                        <label class="form-check-label" for="inlineRadio1">Active</label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer th:replace="admin/fragments/footer::footer"></footer>
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div th:replace="admin/fragments/logout::logout"></div>
+<!-- Bootstrap core JavaScript-->
+<div th:replace="admin/fragments/script::script"></div>
+<script src="/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('detail');
+</script>
+</body>
+
+</html>

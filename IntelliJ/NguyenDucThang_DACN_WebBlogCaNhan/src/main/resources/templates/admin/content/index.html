@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="admin/fragments/head::head">
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul th:replace="admin/fragments/slidebar::slidebar"></ul>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav th:replace="admin/fragments/topbar::topbar"></nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800"> List Product </h1>
+                <a th:href="@{/admin/content/add}">Create new</a>
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                    </div>
+                    <div class="card-body">
+                        <input type="text" class="form-control mb-3" id="myInput" name="searchString" />
+                        <table class="table">
+                            <thead>
+                            <tr class="text-center">
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>#</th>
+                            </tr>
+                            </thead>
+                            <tbody id="myTable">
+                            <tr th:each="p : ${list}" class="text-center">
+                                <td th:text="${p.id}"></td>
+                                <td th:text="${p.name}"></td>
+                                <td>
+                                    <img th:src="@{'/uploads/' + ${p.image}}" alt="" style="width: 60px">
+                                </td>
+                                <td th:text="${p.category.name}"></td>
+
+                                <td th:if="${p.status}"><span class="badge badge-success">Active</span></td>
+                                <td th:if="${!p.status}"><span class="badge badge-danger">Not active</span></td>
+
+                                <td>
+                                    <a th:href="@{'/admin/content/edit/' + ${p.id}}"
+                                       class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                                    <a th:href="@{'/admin/content/delete/' + ${p.id}}"
+                                       class="btn btn-sm btn-danger" onclick="return confirm('Bạn chắc chưa?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                    <a th:href="@{'/admin/content-detail/' + ${p.id}}" class="btn btn-sm btn-info">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer th:replace="admin/fragments/footer::footer"></footer>
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div th:replace="admin/fragments/logout::logout"></div>
+
+<!-- Bootstrap core JavaScript-->
+<div th:replace="admin/fragments/script::script"></div>
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+</body>
+
+</html>

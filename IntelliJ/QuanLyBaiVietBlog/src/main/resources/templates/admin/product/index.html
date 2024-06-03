@@ -49,9 +49,8 @@
                             <tr th:each="p : ${products}" class="text-center">
                                 <td th:text="${p.id}"></td>
                                 <td th:text="${p.name}"></td>
-                                <td>
-                                    <img th:src="@{'/uploads/' + ${p.image}}" alt="" style="width: 35px;">
-                                </td>
+                                <td><img th:src="@{'/uploads/' + ${p.image}}" alt="" style="width: 35px;"></td>
+
                                 <td th:text="${p.category.name}"></td>
 
                                 <td th:if="${p.status}"><span class="badge badge-success">Active</span></td>

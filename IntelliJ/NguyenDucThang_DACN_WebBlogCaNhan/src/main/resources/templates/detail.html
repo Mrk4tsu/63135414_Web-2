@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts/head::head"></head>
+
+
+<body>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Humberger Begin -->
+<div class="humberger__menu__overlay"></div>
+<div th:replace="layouts/navbar-mobile::navbar-mobile"></div>
+<div th:replace="layouts/navbar-pc::navbar-pc"></div>
+
+<!-- Tìm kiếm Begin -->
+<section class="container ">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-12 col-md-8 col-lg-8 col-12">
+            <div class="input-group mb-3 my-2">
+                <input type="text" class="form-control text-light input-search p-4"
+                       placeholder="Nhập để tìm kiếm..." aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn bg-gradient-success" type="submit">Tìm kiếm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Tìm kiếm End -->
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-9 col-md-9 col-sm-12">
+            <!--        Tiêu đề-->
+            <h3 class="font-weight-bold text-info my-3">Sekiro: Shadows Die Twice </h3>
+            <!--       Nội dung-->
+            <div class="content-blog">
+                <img th:src="@{'/uploads/' + ${content.image}}" alt="" style="border-top-left-radius: 10px; border-top-right-radius: 10px">
+
+                <div class="content-detail">
+                    <div th:utext="${content.detail}"></div>
+                </div>
+
+                <hr class="p-0">
+                <div class="mt-3 px-3">
+                    <span class="text-light ">Tags:</span>
+                    <div class="tags mt-1">
+                        <a href="#"><span class="badge badge-green mx-1">HTML</span></a>
+                        <a href="#"><span class="badge badge-green mx-1">Bootstrap</span></a>
+                        <a href="#"><span class="badge badge-green mx-1">HTML</span></a>
+                        <a href="#"><span class="badge badge-green mx-1">HTML</span></a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer Section Begin -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="footer__copyright__text">
+                    <p class="text-light">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                        All rights reserved | This template is made with <i class="fa fa-heart"
+                                                                            aria-hidden="true"></i> by <a
+                            href="https://github.com/Mrk4tsu" target="_blank" class="text-info">MrKatsu</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                </div>
+                <div class="footer__copyright__payment"><img src="/client/img/payment-item.png" alt=""></div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+<!-- Js Plugins -->
+<script src="/client/js/jquery-3.3.1.min.js"></script>
+<script src="/client/js/bootstrap.bundle.js"></script>
+<script src="/client/js/bootstrap.min.js"></script>
+<script src="/client/js/jquery.nice-select.min.js"></script>
+<script src="/client/js/jquery-ui.min.js"></script>
+<script src="/client/js/jquery.slicknav.js"></script>
+<script src="/client/js/mixitup.min.js"></script>
+<script src="/client/js/owl.carousel.min.js"></script>
+<script src="/client/js/main.js"></script>
+<script src="/client/plugin/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
